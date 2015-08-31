@@ -1,4 +1,4 @@
-//File name: homework1.cpp
+//File Name: Homework1.Cpp
 //Created by: Joe Pollard
 //Created on: 08/30/15
 //Synopsis: majorityElement returns the majority element of a non-empty array, assuming it exists. 
@@ -12,11 +12,22 @@ using namespace std;
 
 int majorityElement(vector<int>& nums) {
  // Write your solution here.
-    int num = 0;
-    for (int i = 0; i < nums.size(), i++){
-        
+    int num = nums[0];
+    int count = 0;
+    for (int i = 0; i < nums.size(); i++){
+      int temp = 0;
+      for (int j = 0; j < nums.size(); j++){
+	if(nums[j] == nums[i]){
+	  temp++;
+	}
+      }
+      if(temp > count){
+	count = temp;
+	num = nums[i];
+      }
     }
-    }
+    return num;
+}
 int main(){	
 	vector <int> a = { 1, 2, 3, 3, 3 }; 
 	vector <int> c = { 1870 };
