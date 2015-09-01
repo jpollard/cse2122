@@ -12,18 +12,24 @@ using namespace std;
 
 int majorityElement(vector<int>& nums) {
  // Write your solution here.
+    int size = (int)nums.size();
     int num = nums[0];
     int count = 0;
-    for (int i = 0; i < nums.size(); i++){
+
+    // Look at each number in the vector
+    for (int i = 0; i < size; i++){
       int temp = 0;
-      for (int j = 0; j < nums.size(); j++){
+
+      // Go through each number in the vector and compare to i
+      for (int j = 0; j < size; j++){
 	if(nums[j] == nums[i]){
 	  temp++;
 	}
       }
-      if(temp > count){
-	count = temp;
+      
+      if(temp >= size/2){
 	num = nums[i];
+	break;
       }
     }
     return num;
