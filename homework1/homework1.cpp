@@ -14,7 +14,6 @@ int majorityElement(vector<int>& nums) {
  // Write your solution here.
     int size = (int)nums.size();
     int num = nums[0];
-    int count = 0;
 
     // Look at each number in the vector
     for (int i = 0; i < size; i++){
