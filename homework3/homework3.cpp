@@ -16,10 +16,10 @@ using namespace std;
 #define COLS 80
 
 // You can change the characters used to represent DEAD and ALIVE cells here
-#define DEAD  '.'
-#define ALIVE '*'
+#define DEAD  ' '
+#define ALIVE '#' 
 
-bool isAlive(vector< vector<char> > &world, int x, int y){
+bool isAlive(vector< vector<char> > &world, int y, int x){
   // neighbor count
   int num_neighbor = 0;
 
@@ -47,37 +47,37 @@ bool isAlive(vector< vector<char> > &world, int x, int y){
 
   // test if the neighbor is alive, if so add to neighbor count
   // test left side
-  if(world[left][top] == ALIVE){
+  if(world[top][left] == ALIVE){
     num_neighbor++;
   }
-  if(world[left][y] == ALIVE){
+  if(world[y][left] == ALIVE){
     num_neighbor++;
   }
-  if(world[left][bottom] == ALIVE){
+  if(world[bottom][left] == ALIVE){
     num_neighbor++;
   }
   // test mid top and bottom
-  if(world[x][top] == ALIVE){
+  if(world[top][x] == ALIVE){
     num_neighbor++;
   }
-  if(world[x][bottom] == ALIVE){
+  if(world[bottom][x] == ALIVE){
     num_neighbor++;
   }
   // test right side
-  if(world[right][top] == ALIVE){
+  if(world[top][right] == ALIVE){
     num_neighbor++;
   }
-  if(world[right][y] == ALIVE){
+  if(world[y][right] == ALIVE){
     num_neighbor++;
   }
-  if(world[right][bottom] == ALIVE){
+  if(world[bottom][right] == ALIVE){
     num_neighbor++;
   }
 
   // now that we have a count of the neighbors, we can determine if the
   // cell should live, die or be born.
-  if(world[x][y] == ALIVE){
-    if(num_neighbor < 3 || num_neighbor > 3){
+  if(world[y][x] == ALIVE){
+    if(num_neighbor < 2 || num_neighbor > 3){
       alive = false;
     } else {
       alive = true;
@@ -111,15 +111,15 @@ void generation(vector< vector<char> > &world,
     }
 
     // move contents of world_copy to world
-    // for(int i = 0; i < ROWS; i++) {
-    //   for(int j = 0; j < COLS; j++){
-    // 	world[i][j] = world_copy[i][j];
-    //   }
-    // }
+    for(int i = 0; i < ROWS; i++) {
+      for(int j = 0; j < COLS; j++){
+     	world[i][j] = world_copy[i][j];
+      }
+    }
     
 }
 
-void display(vector< vector<char> > &world)
+void display(vector< vector<char> > &world, int count)
 {
     // display the 2D matrix
     // You can add more code to 'beautify' the display of the matrix
@@ -131,29 +131,36 @@ void display(vector< vector<char> > &world)
             }
             cout << endl;
         }
+    cout << "Generation: " << count << endl;
 }
 
 int main()
 {
     vector< vector<char> > world(ROWS, vector<char>(COLS, DEAD));
     vector< vector<char> > copy(ROWS, vector<char>(COLS, DEAD));
+    int gen_count = 0;
 
     // set some cells of world to ALIVE for initial configuration
     world[1][1] = world[1][2] = world[1][3] = ALIVE;
-
+    world[20][20] = world[20][19] = world[19][19] = world[19][20] = world[18][20] = ALIVE;
+    world[0][0] = world[0][1] = world[0][2] = ALIVE;
+    world[13][50] = world[14][50] = world[13][51] = world[12][50] = world[13][49] = ALIVE;
+    world[10][40] = world[10][41] = world[10][42] = world[9][40] = world[9][41] = world[9][42] = ALIVE;
+    world[8][10] = world[8][7] = world[9][11] = world[8][9] = ALIVE;
+    world[5][4] = world[6][4] = world[7][4] = world[6][6] = world[7][5] = ALIVE;
     while(true)
     {
         // clear the screen and display the world
         system("clear"); // linux / Mac OS X
         // system("cls"); // Windows
-        display(world);
-
-        // wait for some time
-        usleep(800000); // linux / Mac OS X
+        display(world, gen_count);
+	// wait for some time
+        usleep(500000); // linux / Mac OS X
         // Sleep(800); // Windows
 
         // update the world
         generation(world, copy);
+	gen_count++;
     }
     return 0;
 }
