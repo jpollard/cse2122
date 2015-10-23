@@ -1,3 +1,7 @@
+/* 
+ *
+ *
+ */
 #include <iostream>
 #include <string>
 #include <cmath>
@@ -8,14 +12,36 @@ using namespace std;
 double evalOp(string op, double val)
 {
     // for evaluating functions like sin, cos, etc.
+  double mVal = 0;
+  if (op == "sin"){
+    mVal = sin(val);
+  } else if (op == "cos"){
+    mVal = cos(val);
+  } else if (op == "tan"){
+    mVal = tan(val);
+  } else if (op == "-"){
+    mVal = 0 - val;
+  }
 	
-	return 0; // Default return
+	return mVal; // Default return
 }
 
 double evalOp(string op, double val1, double val2)
 {
-    // for evaluating operators like +, -, etc.
-	return 0; // Default return 
+   // for evaluating operators like +, -, etc.
+  double val = 0;
+  if(op == "-"){
+    val = val1 - val2;
+  } else if (op == "+"){
+    val = val1 + val2;
+  } else if (op == "*"){
+    val = val1 * val2;
+  } else if (op == "/"){
+    val = val1 / val2;
+  } else if (op == "^"){
+    val = pow(val1, val2);
+  }
+	return val; // Default return 
 }
 
 double eval(Tree *root)
@@ -23,8 +49,15 @@ double eval(Tree *root)
     // for (recursively) evaluating a tree; this function will refer
     // back to itself (for evaluating subtrees) and will use the
     // evalOp() functions
-
-	return 0; // default return
+  double val = 0;
+  if(root->right){
+    val = evalOp(root->op, eval(root->left), eval(root->right));
+  } else if (root->left) {
+    val = evalOp(root->op, eval(root->left));
+  } else {
+    val = root->val;
+  }
+	return val; // default return
 }
 
 // this is a global variable used by the parser
