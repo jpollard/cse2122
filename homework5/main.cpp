@@ -21,6 +21,8 @@ double evalOp(string op, double val)
     mVal = tan(val);
   } else if (op == "-"){
     mVal = 0 - val;
+  } else if (op == "log"){
+    mVal = log10(val);
   }
 	
 	return mVal; // Default return
