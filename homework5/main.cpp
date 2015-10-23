@@ -23,6 +23,8 @@ double evalOp(string op, double val)
     mVal = 0 - val;
   } else if (op == "log"){
     mVal = log10(val);
+  } else if (op == "exp"){
+    mVal = exp(val);
   }
 	
 	return mVal; // Default return
