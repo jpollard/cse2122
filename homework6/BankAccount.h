@@ -1,20 +1,24 @@
-#ifndef BANK_ACCOUNT_H_
-#define BANK_ACCOUNT_H_
+#ifndef HOMEWORK6_BANKACCOUNT_H_
+#define HOMEWORK6_BANKACCOUNT_H_
 
 #include <string>
 
 class BankAccount {
  private:
   std::string name;
-  double balance;
 
- public:
+ public: 
+  // Constructors 
+  BankAccount();
+  BankAccount(std::string s, double balance);
+  
   bool deposit(double amount);
-  bool withdraw(double amount);
+  virtual bool withdraw(double amount) = 0;
   double getBalance();
   std::string getName();
-  
+
  protected:
+  double balance;
 };
 
 #endif

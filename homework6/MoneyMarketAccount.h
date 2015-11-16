@@ -5,9 +5,14 @@
 
 class MoneyMarketAccount : public BankAccount {
  public:
-
+  MoneyMarketAccount();
+  ~MoneyMarketAccount();
+  
+  bool withdraw(double amount);
+  
  private:
-  int numWidrawls;
+  int numWithdraws;
+  int fee;
   
  protected:
 
