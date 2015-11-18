@@ -6,6 +6,9 @@
 class MoneyMarketAccount : public BankAccount {
  public:
   MoneyMarketAccount();
+  MoneyMarketAccount(std::string _name);
+  MoneyMarketAccount(std::string _name, double _balance);
+  
   ~MoneyMarketAccount();
   
   bool withdraw(double amount);

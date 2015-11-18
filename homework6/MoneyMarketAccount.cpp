@@ -5,6 +5,16 @@ MoneyMarketAccount::MoneyMarketAccount(){
   fee = 1.50;
 }
 
+MoneyMarketAccount::MoneyMarketAccount(std::string _name): BankAccount(_name){
+  numWithdraws = 0;
+  fee = 1.50;
+}
+
+MoneyMarketAccount::MoneyMarketAccount(std::string _name, double _balance): BankAccount(_name, _balance){
+  numWithdraws = 0;
+  fee = 1.50;
+}
+
 MoneyMarketAccount::~MoneyMarketAccount(){
 }
 

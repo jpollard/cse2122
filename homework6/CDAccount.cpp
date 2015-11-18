@@ -1,7 +1,13 @@
 #include "CDAccount.h"
 
-CDAccount::CDAccount(){
-  balance = 100;
+CDAccount::CDAccount():BankAccount(){
+}
+
+CDAccount::CDAccount(std::string _name):BankAccount(_name){
+}
+
+CDAccount::CDAccount(std::string _name, double _balance):BankAccount(_name, _balance){
+  
 }
 
 CDAccount::CDAccount(double _interestRate){
@@ -16,9 +22,11 @@ bool CDAccount::deposit(double amount){
 
 bool CDAccount::withdraw(double amount){
   bool status = false;
+  double penalty = balance * interestRate;
   
-  if(amount >= balance){
-
+  if(amount + penalty <= balance ){
+    balance -= (amount + penalty);
+    status = true;
   }
 
   return status;

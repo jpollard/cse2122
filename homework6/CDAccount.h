@@ -9,6 +9,8 @@ class CDAccount: public BankAccount{
   
  public:
   CDAccount();
+  CDAccount(std::string _name);
+  CDAccount(std::string _name, double _balance);
   CDAccount(double interestRate);
   
   bool deposit(double amount);
