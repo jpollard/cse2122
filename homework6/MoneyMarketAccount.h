@@ -15,7 +15,7 @@ class MoneyMarketAccount : public BankAccount {
   
  private:
   int numWithdraws;
-  int fee;
+  double fee;
   
  protected:
 

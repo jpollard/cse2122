@@ -5,7 +5,7 @@
 
 class CDAccount: public BankAccount{
  private:
-  double interestRate;
+  
   
  public:
   CDAccount();
@@ -15,7 +15,9 @@ class CDAccount: public BankAccount{
   
   bool deposit(double amount);
   bool withdraw(double amount);
-  
+  bool setInterestRate(double amount);
+
+  double interestRate;
  protected:
   
 };

@@ -1,4 +1,5 @@
 #include "MoneyMarketAccount.h"
+#include <iostream>
 
 MoneyMarketAccount::MoneyMarketAccount(){
   numWithdraws = 0;
@@ -16,21 +17,23 @@ MoneyMarketAccount::MoneyMarketAccount(std::string _name, double _balance): Bank
 }
 
 MoneyMarketAccount::~MoneyMarketAccount(){
+  
 }
 
 bool MoneyMarketAccount::withdraw(double amount){
   bool status = false;
   if(balance >= amount){
-    if(numWithdraws <= 2){
+    if(numWithdraws < 2){
       status = true;
       balance -= amount;
       numWithdraws++;
     } else {
-      if(balance >= amount + fee){
+      if(balance >= (amount + fee)){
 	status = true;
-	balance -= amount + fee;
+	balance -= (amount + fee);
 	numWithdraws++;
       }
     }
   }
+  return status;
 }
