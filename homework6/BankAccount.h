@@ -10,6 +10,7 @@ class BankAccount {
  public: 
   // Constructors 
   BankAccount();
+  BankAccount(std::string _name);
   BankAccount(std::string s, double balance);
   
   bool deposit(double amount);

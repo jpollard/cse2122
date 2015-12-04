@@ -7,6 +7,10 @@ BankAccount::BankAccount(){
   name = "";
 }
 
+BankAccount::BankAccount(std::string _name){
+  name = _name;
+}
+
 // Constructor that provides the initial name and balance of the account
 BankAccount::BankAccount(std::string _name, double _balance){
   name = _name;
