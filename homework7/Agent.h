@@ -9,7 +9,7 @@
 class Agent : public Thing {
  protected:
   Agent(std::string name, std::string desc, int size);
-
+  Agent(std::string name);
   virtual bool walk(std::string exit) = 0;
 
  public:

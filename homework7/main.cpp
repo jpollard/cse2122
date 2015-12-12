@@ -1,6 +1,10 @@
+// filename: main.cpp
+// created by: joe pollard
+//
 #include "Room.h"
 #include "Player.h"
 #include "Game.h"
+#include "Grue.h"
 
 #include <iostream>
 
@@ -29,11 +33,11 @@ int main(){
     game.addAgent(josh);
     //game.addAgent(tracy);
 
-    //Grue *napolean = new Grue("Napolean");
+    Grue *napolean = new Grue("Napolean");
     //Grue *kafka = new Grue("Kafka");
-    //napolean->moveTo(ballroom);
+    napolean->moveTo(ballroom);
     //kafka->moveTo(ballroom);
-    //game.addAgent(napolean);
+    game.addAgent(napolean);
     //game.addAgent(kafka);
 
     //Thing *liberty = new Thing("Statue of Liberty",

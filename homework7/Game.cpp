@@ -16,8 +16,12 @@ void Game::addAgent(Agent *agent){
 bool Game::step() {
   vector<Agent*>::iterator it;
   bool action = true;
+  
   for(it = agents.begin(); it != agents.end(); ++it){
    action = (*it)->act();
+   
+   if (action == false)
+     break;
   }
   return action;
 }
