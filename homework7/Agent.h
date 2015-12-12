@@ -13,7 +13,7 @@ class Agent : public Thing {
   virtual bool walk(std::string exit) = 0;
 
  public:
-  bool act();
+  virtual bool act();
 };
 
 #endif

@@ -15,11 +15,10 @@ void Game::addAgent(Agent *agent){
 
 bool Game::step() {
   vector<Agent*>::iterator it;
-  int i = 0;
-  for(it = agents.begin(); it <= agents.end(); it++, i++){
-   cout << i << endl;
-   agents[i]->act();
+  bool action = true;
+  for(it = agents.begin(); it != agents.end(); ++it){
+   action = (*it)->act();
   }
-  return true;
+  return action;
 }
 

@@ -28,12 +28,21 @@ void Room::link(Room* room, string exit){
   exits.insert( pair<string, Room*>(exit, room));
 }
 
+Room* Room::getLinked(string direction){
+  map<string, Room*>::iterator position;
+  position = exits.find(direction);
+  if(position != exits.end()){
+    return position->second;
+  }
+}
+
 vector<string> Room::getExits(){
   vector<string> x;
   map<string, Room*>::iterator it;
   for(it = exits.begin(); it != exits.end(); it++){
     x.push_back(it->first);
   }
+
   return x;
 }
 
@@ -49,11 +58,14 @@ void Room::remove(Thing* thing){
   //
 }
 
+// Print exits of the current room.
 void Room::printExits(){
   map<string, Room* >::iterator it;
+  cout << "Exits: ";
   for(it = exits.begin(); it != exits.end(); it++){
     cout << it->first << " ";
   }
+  cout << endl;
 }
 
 void Room::printThings(Thing* ignore){

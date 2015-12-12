@@ -28,7 +28,7 @@ class Room{
   void remove(Thing* thing);
   void printExits();
   void printThings(Thing* ignore);
-
+  Room* getLinked(std::string direction);
 };
 
 #endif
