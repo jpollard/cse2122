@@ -28,7 +28,13 @@ void Room::link(Room* room, string exit){
   exits.insert( pair<string, Room*>(exit, room));
 }
 
-vector<string> getExits(){
+vector<string> Room::getExits(){
+  vector<string> x;
+  map<string, Room*>::iterator it;
+  for(it = exits.begin(); it != exits.end(); it++){
+    x.push_back(it->first);
+  }
+  return x;
 }
 
 bool Room::add(Thing* thing){
@@ -44,6 +50,10 @@ void Room::remove(Thing* thing){
 }
 
 void Room::printExits(){
+  map<string, Room* >::iterator it;
+  for(it = exits.begin(); it != exits.end(); it++){
+    cout << it->first << " ";
+  }
 }
 
 void Room::printThings(Thing* ignore){

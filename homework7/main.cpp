@@ -24,7 +24,7 @@ int main(){
 
     Player *josh = new Player("Josh", "A prince", 50);
     //Player *tracy = new Player("Tracy", "A princess", 40);
-    //josh->moveTo(entrance);
+    josh->moveTo(entrance);
     //tracy->moveTo(entrance);
     game.addAgent(josh);
     //game.addAgent(tracy);
